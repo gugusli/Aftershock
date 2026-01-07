@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ta31i7jhjt3k"]
+
+[ext_resource type="Script" uid="uid://b7mwhhgdfkmya" path="res://systems/player.gd" id="1_15tap"]
+[ext_resource type="PackedScene" uid="uid://cx5ploy48fxr5" path="res://scenes/proyectiles/Bullet.tscn" id="2_ru62r"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(31.5, 42.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ru62r"]
+radius = 294.46222
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(24, 15)
+collision_mask = 2
+script = ExtResource("1_15tap")
+bullet_scene = ExtResource("2_ru62r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.499999, 5.750017)
+scale = Vector2(30.99997, 40.500027)
+texture = SubResource("CanvasTexture_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.25, 6.75)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="AutoAim" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAim"]
+shape = SubResource("CircleShape2D_ru62r")
