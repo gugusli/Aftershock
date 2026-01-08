@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://ta31i7jhjt3k"]
+
+[ext_resource type="Script" uid="uid://b7mwhhgdfkmya" path="res://entities/player/player.gd" id="1_15tap"]
+[ext_resource type="PackedScene" uid="uid://cx5ploy48fxr5" path="res://entities/proyectiles/Bullet.tscn" id="2_ru62r"]
+[ext_resource type="Texture2D" uid="uid://dcykghyptt2g2" path="res://assets/east.png" id="3_ktjr4"]
+[ext_resource type="Texture2D" uid="uid://f1j2my0litp6" path="res://assets/west.png" id="4_8y416"]
+[ext_resource type="Texture2D" uid="uid://duf1vcmixd1eo" path="res://assets/north.png" id="5_7860b"]
+[ext_resource type="Texture2D" uid="uid://cdyqe7b8kfwmq" path="res://assets/south.png" id="6_xx81n"]
+[ext_resource type="Script" uid="uid://b5smixm7242yb" path="res://combat/hit_detection/Hurtbox.gd" id="7_26q78"]
+[ext_resource type="Script" uid="uid://byrt5hlv2fhrp" path="res://combat/core/Damageable.gd" id="7_qiwj3"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_7wueq"]
+frames = 4
+frame_0/texture = ExtResource("3_ktjr4")
+frame_1/texture = ExtResource("4_8y416")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_7860b")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_xx81n")
+frame_3/duration = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(12, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ru62r"]
+radius = 294.46222
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bectd"]
+size = Vector2(12, 32)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(24, 15)
+collision_mask = 2
+script = ExtResource("1_15tap")
+bullet_scene = ExtResource("2_ru62r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.999996, 7)
+scale = Vector2(1.0625, 1.375)
+texture = SubResource("AnimatedTexture_7wueq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 7)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="AutoAim" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAim"]
+position = Vector2(-4, 10)
+shape = SubResource("CircleShape2D_ru62r")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("7_26q78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-5, 7)
+shape = SubResource("RectangleShape2D_bectd")
+debug_color = Color(0.7133657, 0.25997654, 1, 0.41960785)
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("7_qiwj3")
