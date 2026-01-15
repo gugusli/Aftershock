@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://3ckehfmsd1qi"]
+
+[ext_resource type="Script" uid="uid://cqhtqw1wraqjx" path="res://entities/enemies/Enemy.gd" id="1_ktxhy"]
+[ext_resource type="Script" uid="uid://cb4wv5s31n7jk" path="res://combat/hit_detection/Hitbox.gd" id="2_qqu5c"]
+[ext_resource type="Script" uid="uid://b5smixm7242yb" path="res://combat/hit_detection/Hurtbox.gd" id="2_rfvys"]
+[ext_resource type="Script" uid="uid://byrt5hlv2fhrp" path="res://combat/core/Damageable.gd" id="3_dqsgq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82qr8"]
+size = Vector2(26, 29)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kt0nt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8idp"]
+size = Vector2(27, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcg0s"]
+size = Vector2(26, 30.375)
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(183, 9)
+collision_layer = 2
+script = ExtResource("1_ktxhy")
+speed = 150.0
+contact_damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 15.5)
+shape = SubResource("RectangleShape2D_82qr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12.249999, 14.25)
+scale = Vector2(25.499998, 29.5)
+texture = SubResource("CanvasTexture_kt0nt")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(11, 15)
+script = ExtResource("2_rfvys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color(0.7181005, 0.6219942, 1.92523e-07, 1)
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_i8idp")
+debug_color = Color(0.66775566, 0.5109517, 0, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(11, 15)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_qqu5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, -0.1875)
+shape = SubResource("RectangleShape2D_gcg0s")
+debug_color = Color(0.52873915, 0.41420978, 1, 0.41960785)
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("3_dqsgq")

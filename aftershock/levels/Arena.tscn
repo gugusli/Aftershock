@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctj4b6mt2p4j4"]
+
+[ext_resource type="PackedScene" uid="uid://3ckehfmsd1qi" path="res://entities/enemies/Enemy.tscn" id="1_73cya"]
+[ext_resource type="PackedScene" uid="uid://486c4p5tvfoy" path="res://ui/HUD/HUD.tscn" id="1_507yn"]
+[ext_resource type="Script" uid="uid://uf03l3urvtv" path="res://levels/Arena.gd" id="1_fqc8i"]
+[ext_resource type="PackedScene" uid="uid://ta31i7jhjt3k" path="res://entities/player/player.tscn" id="2_4p07w"]
+[ext_resource type="Script" uid="uid://c3yj6rspqc1mk" path="res://levels/WaveManager.gd" id="2_7lwx5"]
+[ext_resource type="Script" uid="uid://5tsfs7362xg4" path="res://core/GameManager.gd" id="2_cnoco"]
+[ext_resource type="PackedScene" uid="uid://bshtvywvd0n5t" path="res://ui/EndScreen.tscn" id="2_gokyf"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_fqc8i")
+
+[node name="EndScreen" parent="." instance=ExtResource("2_gokyf")]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_cnoco")
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("2_7lwx5")
+enemy_scene = ExtResource("1_73cya")
+
+[node name="Player" parent="." instance=ExtResource("2_4p07w")]
+position = Vector2(141, 331)
+
+[node name="HUD" parent="." instance=ExtResource("1_507yn")]

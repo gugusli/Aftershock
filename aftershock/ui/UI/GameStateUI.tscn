@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34md07orr5me"]
+
+[ext_resource type="Script" uid="uid://b5hypjuv72pqe" path="res://ui/UI/GameStateUI.gd" id="1_ykfvq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykfvq"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="GameStateUi" type="CanvasLayer"]
+script = ExtResource("1_ykfvq")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykfvq")
+
+[node name="StateLabel" type="Label" parent="Root/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Root/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -31.0
+offset_right = 52.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "REINTENTAR"

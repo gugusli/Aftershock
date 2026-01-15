@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckpe4dy04eiqf"]
+
+[ext_resource type="Script" uid="uid://b0w6h57afj6aq" path="res://systems/waves/EnemySpawner.gd" id="1_ww25l"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_ww25l")
+spawn_interval = 1.0

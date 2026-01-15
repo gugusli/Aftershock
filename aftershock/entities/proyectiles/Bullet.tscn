@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx5ploy48fxr5"]
+
+[ext_resource type="Script" uid="uid://p2vwk4fdlypc" path="res://entities/proyectiles/bullet.gd" id="1_hunnw"]
+[ext_resource type="Texture2D" uid="uid://h4qvn2eu3wgp" path="res://assets/icon.svg" id="2_nddbh"]
+[ext_resource type="Script" uid="uid://b5smixm7242yb" path="res://combat/hit_detection/Hurtbox.gd" id="3_nddbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow4r4"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n00jd"]
+size = Vector2(15, 14)
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_hunnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 15)
+shape = SubResource("RectangleShape2D_ow4r4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12.5, 15)
+scale = Vector2(0.1015625, 0.09375)
+texture = ExtResource("2_nddbh")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_nddbh")
+damage = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(12.5, 15)
+shape = SubResource("RectangleShape2D_n00jd")
