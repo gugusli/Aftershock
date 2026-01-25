@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bouncingbullet123"]
+
+[ext_resource type="Script" path="res://entities/proyectiles/BouncingBullet.gd" id="1_bounce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bounce"]
+radius = 4.0
+
+[node name="BouncingBullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_bounce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bounce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.2, 0.8, 1, 1)
+scale = Vector2(1.5, 1.5)

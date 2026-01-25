@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn7ky1bwh5ep6"]
+
+[ext_resource type="Script" uid="uid://bl7gmoacd3js7" path="res://ui/hud/UpgradeMenu.gd" id="1_2og1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epl5p"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.1254902)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_xq4au"]
+font_size = 32
+
+[node name="UpgradeMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2og1b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.24705882)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_epl5p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "¡SUBISTE DE NIVEL!"
+label_settings = SubResource("LabelSettings_xq4au")
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Elige una recompensa"
+horizontal_alignment = 1
+
+[node name="CardContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ButtonOption1" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+
+[node name="ButtonOption2" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+
+[node name="ButtonOption3" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
