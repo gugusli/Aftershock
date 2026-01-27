@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://dda455uqoyhxv"]
+
+[ext_resource type="Script" path="res://ui/menus/PauseMenu.gd" id="1_pausemenu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pausemenu"]
+bg_color = Color(0, 0, 0, 0.8)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_pausemenu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pausemenu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "PAUSA"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 48
+
+[node name="ResumeButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Reanudar"
+theme_override_font_sizes/font_size = 32
+
+[node name="RestartButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+theme_override_font_sizes/font_size = 24
+
+[node name="MainMenuButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Menú Principal"
+theme_override_font_sizes/font_size = 24
+
+[node name="QuitButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+theme_override_font_sizes/font_size = 24
